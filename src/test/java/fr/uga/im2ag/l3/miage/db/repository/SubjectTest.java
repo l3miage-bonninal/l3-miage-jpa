@@ -27,6 +27,7 @@ class SubjectTest extends Base {
     void shouldSaveSubject() {
 
         final var subject = Fixtures.createSubject();
+        subject.setId(Long.valueOf(2));
 
         entityManager.getTransaction().begin();
         subjectRepository.save(subject);
