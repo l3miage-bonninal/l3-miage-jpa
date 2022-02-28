@@ -2,6 +2,7 @@ package fr.uga.im2ag.l3.miage.db.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -13,6 +14,7 @@ public class GraduationClass {
     @Id
     private Long id;
     private String name;
+    @Column(name="class_year")
     private Integer year;
     @OneToMany(mappedBy="belongTo")
     private List<Student> students;

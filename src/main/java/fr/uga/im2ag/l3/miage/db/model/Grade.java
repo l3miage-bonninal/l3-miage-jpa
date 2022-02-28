@@ -1,5 +1,6 @@
 package fr.uga.im2ag.l3.miage.db.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
@@ -13,7 +14,10 @@ public class Grade {
     private Long id;
     @OneToOne
     private Subject subject;
+    
+    @Column(name="grade_value")
     private Float value;
+    
     private Float weight;
 
     public Long getId() {
