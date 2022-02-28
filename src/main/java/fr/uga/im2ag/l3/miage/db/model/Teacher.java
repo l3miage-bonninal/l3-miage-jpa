@@ -8,7 +8,7 @@ import javax.persistence.OneToOne;
 
 // TODO ajouter une named query pour une des requêtes à faire dans le repository
 @Entity
-@DiscriminatorValue(value="student")
+@DiscriminatorValue(value="teacher")
 public class Teacher extends Person {
 
     @OneToOne

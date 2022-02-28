@@ -32,13 +32,11 @@ public class SubjectRepositoryImpl extends BaseRepositoryImpl implements Subject
 
     @Override
     public List<Subject> getAll() {
-        // TODO
-        return null;
+        return entityManager.createQuery("select s from Subject", Subject.class).getResultList();
     }
 
     @Override
     public Collection<Teacher> findTeachers(Long id) {
-        // TODO
-        return null;
+        return entityManager.createNamedQuery("teachers-by-subject", Teacher.class).setParameter("id", id).getResultList();
     }
 }
