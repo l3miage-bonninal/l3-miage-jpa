@@ -3,9 +3,11 @@ package fr.uga.im2ag.l3.miage.db.model;
 import java.util.Date;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import org.hibernate.annotations.GenericGenerator;
 
 @Inheritance(strategy=InheritanceType.JOINED)
 @Entity
@@ -13,6 +15,8 @@ import javax.persistence.InheritanceType;
 public abstract class Person {
 
     @Id
+    @GenericGenerator(name = "kaugen1", strategy = "increment")
+    @GeneratedValue(generator = "kaugen1")
     private Long id;
     private Gender gender;
     private String firstName;

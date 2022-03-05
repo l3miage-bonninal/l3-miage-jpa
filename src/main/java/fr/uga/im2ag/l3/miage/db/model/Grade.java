@@ -2,8 +2,10 @@ package fr.uga.im2ag.l3.miage.db.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import org.hibernate.annotations.GenericGenerator;
 
 
 // TODO ajouter une named query pour une des requêtes à faire dans le repository
@@ -11,6 +13,8 @@ import javax.persistence.OneToOne;
 public class Grade {
 
     @Id
+    @GenericGenerator(name = "kaugen1", strategy = "increment")
+    @GeneratedValue(generator = "kaugen1")
     private Long id;
     @OneToOne
     private Subject subject;

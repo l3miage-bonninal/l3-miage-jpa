@@ -10,7 +10,6 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import org.hibernate.annotations.GenericGenerator;
 
-// TODO ajouter une named query pour une des requêtes à faire dans le repository
 @Entity
 @NamedQuery(name="teachers-by-subject", query="select t from Teacher t join t.teaching s where s.id = :id ")
 public class Subject {

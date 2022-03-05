@@ -4,14 +4,18 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import org.hibernate.annotations.GenericGenerator;
 
 // TODO ajouter une named query pour une des requêtes à faire dans le repository
 @Entity
 public class GraduationClass {
 
     @Id
+    @GenericGenerator(name = "kaugen1", strategy = "increment")
+    @GeneratedValue(generator = "kaugen1")
     private Long id;
     private String name;
     @Column(name="class_year")
