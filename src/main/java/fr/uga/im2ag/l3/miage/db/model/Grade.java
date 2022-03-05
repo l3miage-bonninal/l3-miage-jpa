@@ -4,12 +4,13 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import org.hibernate.annotations.GenericGenerator;
 
 
-// TODO ajouter une named query pour une des requêtes à faire dans le repository
 @Entity
+@NamedQuery(name="best-grades", query="select g from Grade g where g.value >= :threshold")
 public class Grade {
 
     @Id

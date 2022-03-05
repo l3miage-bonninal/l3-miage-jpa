@@ -20,8 +20,7 @@ public class GradeRepositoryImpl extends BaseRepositoryImpl implements GradeRepo
 
     @Override
     public List<Grade> findHighestGrades(int limit) {
-        // TODO
-        return null;
+        return entityManager.createNamedQuery("best-grades", Grade.class).setParameter("threshold", (float) limit).getResultList();
     }
 
     @Override
@@ -32,7 +31,7 @@ public class GradeRepositoryImpl extends BaseRepositoryImpl implements GradeRepo
 
     @Override
     public void save(Grade entity) {
-       entityManager.persist(entity);
+        entityManager.persist(entity);
     }
 
     @Override
