@@ -19,9 +19,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 class SubjectTest extends Base {
 
     SubjectRepository subjectRepository;
-    TeacherRepository teacherRepository;
-    GraduationClassRepository gcRepository;
-    StudentRepository studentRepository;
 
     @BeforeEach
     void before() {
@@ -54,17 +51,18 @@ class SubjectTest extends Base {
 
     @Test
     void shouldFindTeachersForSubject() {
-        /*final var subject = Fixtures.createSubject();
+        final var subject = Fixtures.createSubject();
         entityManager.getTransaction().begin();
         subjectRepository.save(subject);
         final var graduationClass = Fixtures.createClass();
-        gcRepository.save(graduationClass);
+        entityManager.persist(graduationClass);
         final var student = Fixtures.createStudent(graduationClass);
+        entityManager.persist(student);
         final var students = new Student[1];
         students[0] = student;
         final var teacher = Fixtures.createTeacher(subject, graduationClass, students);
         
-        teacherRepository.save(teacher);
+        entityManager.persist(teacher);
         entityManager.getTransaction().commit();
         
         Collection<Teacher> foundTeachers = subjectRepository.findTeachers(subject.getId());

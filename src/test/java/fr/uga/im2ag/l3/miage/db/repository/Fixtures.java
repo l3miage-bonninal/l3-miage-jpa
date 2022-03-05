@@ -10,6 +10,7 @@ import fr.uga.im2ag.l3.miage.db.model.Teacher;
 
 import java.time.temporal.ChronoUnit;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 public class Fixtures {
@@ -39,10 +40,13 @@ public class Fixtures {
 
     public static Student createStudent(GraduationClass graduationClass) {
         var student = new Student().setBelongTo(graduationClass);
-        student.setBirth(Faker.instance().date().past(19 * 365, 21 * 365, TimeUnit.DAYS))
-                .setFirstName(Faker.instance().name().firstName())
-                .setLastName(Faker.instance().name().lastName())
-                .setGender(Person.Gender.values()[Faker.instance().number().numberBetween(0, 2)]);
+        
+        Date nais = Faker.instance().date().past(21 * 365, 19 * 365, TimeUnit.DAYS);
+        
+        student.setBirth(nais);
+        student.setFirstName(Faker.instance().name().firstName());
+        student.setLastName(Faker.instance().name().lastName());
+        student.setGender(Person.Gender.values()[Faker.instance().number().numberBetween(0, 2)]);
 
         graduationClass.addStudent(student);
 
@@ -55,7 +59,7 @@ public class Fixtures {
                 .setHeading(heading)
                 .setFavorites(Arrays.asList(favs));
 
-        teacher.setBirth(Faker.instance().date().past(30 * 365, 60 * 365, TimeUnit.DAYS))
+        teacher.setBirth(Faker.instance().date().past(60 * 365, 30 * 365, TimeUnit.DAYS))
                 .setFirstName(Faker.instance().name().firstName())
                 .setLastName(Faker.instance().name().lastName())
                 .setGender(Person.Gender.values()[Faker.instance().number().numberBetween(0, 2)]);
