@@ -6,19 +6,21 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import org.hibernate.annotations.GenericGenerator;
 
-// TODO ajouter une named query pour une des requêtes à faire dans le repository
 @Entity
+@NamedQuery(name="find-by-year-name", query="select gc from GraduationClass gc where gc.year = :year and gc.name = :name")
 public class GraduationClass {
 
     @Id
     @GenericGenerator(name = "kaugen1", strategy = "increment")
     @GeneratedValue(generator = "kaugen1")
     private Long id;
+    @Column(nullable=false)
     private String name;
-    @Column(name="class_year")
+    @Column(name="class_year", nullable=false)
     private Integer year;
     @OneToMany(mappedBy="belongTo")
     private List<Student> students;
