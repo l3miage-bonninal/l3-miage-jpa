@@ -7,9 +7,11 @@ import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Immutable;
 
 
 @Entity
+@Immutable
 @NamedQuery(name="best-grades", query="select g from Grade g where g.value >= :threshold")
 public class Grade {
 
@@ -17,6 +19,7 @@ public class Grade {
     @GenericGenerator(name = "kaugen1", strategy = "increment")
     @GeneratedValue(generator = "kaugen1")
     private Long id;
+    
     @OneToOne
     private Subject subject;
     

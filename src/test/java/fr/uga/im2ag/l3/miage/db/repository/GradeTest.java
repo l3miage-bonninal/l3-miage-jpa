@@ -44,7 +44,23 @@ class GradeTest extends Base {
 
     @Test
     void shouldFailUpgradeGrade() {
-        // TODO, ici tester que la mise à jour n'a pas eu lieu.
+        entityManager.getTransaction().begin();
+        final var subject = Fixtures.createSubject();
+        entityManager.persist(subject);
+        final var grade1 = Fixtures.createGrade(subject);
+        grade1.setValue(10.0f);
+        gradeRepository.save(grade1);
+        entityManager.getTransaction().commit();
+        
+        grade1.setValue(11.0f);
+        entityManager.detach(grade1);
+        
+        var sGrade = gradeRepository.findById(grade1.getId());
+        assertThat(sGrade).isNotNull().isNotSameAs(grade1);
+        assertThat(sGrade.getValue()).isEqualTo(10.0f);
+        
+        
+        
     }
 
     @Test
@@ -58,9 +74,9 @@ class GradeTest extends Base {
         grade1.setValue(10.0f);
         grade2.setValue(20.0f);
         grade3.setValue(12.0f);
-        entityManager.persist(grade1);
-        entityManager.persist(grade2);
-        entityManager.persist(grade3);
+        gradeRepository.save(grade1);
+        gradeRepository.save(grade2);
+        gradeRepository.save(grade3);
         entityManager.getTransaction().commit();
         
         Collection<Grade> bestGrades = gradeRepository.findHighestGrades(13);
