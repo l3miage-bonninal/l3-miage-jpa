@@ -15,6 +15,7 @@ public class Student extends Person {
 
     @ManyToOne
     private GraduationClass belongTo;
+    
     @OneToMany
     private List<Grade> grades;
 
