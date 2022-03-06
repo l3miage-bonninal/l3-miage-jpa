@@ -17,9 +17,11 @@ public class Subject {
     @Id
     @GenericGenerator(name = "kaugen1", strategy = "increment")
     @GeneratedValue(generator = "kaugen1")
-    @Column(name = "id", updatable = false, nullable = false)
     private Long id;
+    
+    @Column(unique=true)
     private String name;
+    
     private Integer points;
     private Float hours;
     private Date startDate;
