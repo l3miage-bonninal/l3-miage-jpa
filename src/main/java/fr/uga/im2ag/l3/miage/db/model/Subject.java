@@ -23,8 +23,12 @@ public class Subject {
     private String name;
     
     private Integer points;
+    
+    @Column(nullable=false)
     private Float hours;
+    @Column(nullable=false)
     private Date startDate;
+    @Column(nullable=false)
     private Date endDate;
 
     public Long getId() {

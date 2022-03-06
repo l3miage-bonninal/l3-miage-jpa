@@ -1,6 +1,7 @@
 package fr.uga.im2ag.l3.miage.db.model;
 
 import java.util.Date;
+import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,8 +19,11 @@ public abstract class Person {
     @GenericGenerator(name = "kaugen1", strategy = "increment")
     @GeneratedValue(generator = "kaugen1")
     private Long id;
+    @Column(nullable=false)
     private Gender gender;
+    @Column(nullable=false)
     private String firstName;
+    @Column(nullable=false)
     private String lastName;
     private Date birth;
 

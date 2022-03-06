@@ -116,5 +116,5 @@ C'est-à-dire que vous ne devez pas ajouter de dépendances dans `pom.xml`, vous
 
 ## Commentaires
 
-Section en option si vous souhaitez justifier certains de vos choix dans votre implémentation. 
 
+Faute de pouvoir utiliser des requêtes imbriquées dans la clause FROM, le calcul de la moyenne ne tient pas compte de la pondération des matières.

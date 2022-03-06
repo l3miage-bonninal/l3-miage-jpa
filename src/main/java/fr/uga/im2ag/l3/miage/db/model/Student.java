@@ -7,7 +7,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
-// TODO ajouter une named query pour une des requêtes à faire dans le repository
 @Entity
 @DiscriminatorValue(value="student")
 @NamedQuery(name="all-students", query="select s from Student s")
